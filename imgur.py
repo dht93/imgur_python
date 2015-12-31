@@ -2,11 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 
-conn=sqlite3.connect('candice.sqlite')
+conn=sqlite3.connect('candice.sqlite')                        #database file
 cur=conn.cursor()
 
 cur.execute('''
-CREATE TABLE IF NOT EXISTS Urls (url TEXT)''')                #database file
+CREATE TABLE IF NOT EXISTS Urls (url TEXT)''')                
 
 cur.execute('''
 SELECT url FROM URLS''')

@@ -1,5 +1,5 @@
 # imgur_python
-Python script to download images from Imgur. The script also creates a sqlite database file to keep track of downloaded images.
+Python script to download images from Imgur. The script makes use of a sqlite database to keep track of downloaded images.
 
 Libraries used
 - Beautiful Soup

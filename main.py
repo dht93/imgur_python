@@ -25,7 +25,7 @@ urls=[el[0] for el in cur.fetchall()]
 
 directory='D:/Code/PY/Imgur/'+name+'/'                     
 if not os.path.exists(directory):
-    os.path.mkdirs(directory)
+    os.makedirs(directory)
 
 for url in urls:
     h=requests.head(url)

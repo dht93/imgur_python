@@ -22,7 +22,7 @@ urls=[el[0] for el in cur.fetchall()]
 for url in urls:
     h=requests.head(url)
     if int(h.headers['content-length'])<1000000:            #making sure the file isn't a gif by making a rough estimate that the
-        r=requests.get(url)                                 #content length is less than 1000000
+        r=requests.get(url)                                 #content length is less than 1 MB
         f_name='candice_'+str(count)+'.jpg'
         with open(f_name,'wb') as f:
                 f.write(r.content)

@@ -22,6 +22,17 @@ r= requests.get(url)
 soup=BeautifulSoup(r.text,'html.parser')                     #html parser
 posts=soup.find_all('a','image-list-link')                   #html tag of each image
 
+'''The above method returns only 60 images since the rest of the page is Javascript rendered.
+Noob method to download all images:
+Load the imgur page. Open developer tools and copy the contents of each div element whose class is 'posts sub-gallery br5'.
+Save all this content to a text file in the same folder as the Python file. Comment the previous 3 lines and uncomment the next 
+4 lines. I'm gonna automate this step soon.'''
+
+'''f=open('candice_html.txt')
+soup=BeautifulSoup(f.read(),'html.parser')
+f.close()
+posts=posts=soup.find_all('a','image-list-link')
+'''
 
 for post in posts[:50]:
     src=post.find('img')['src']

@@ -40,9 +40,9 @@ for url in urls:
         INSERT INTO Urls_Done (num,url) VALUES (?,?)''',(count,url))
         conn.commit()
     else:
-        print 'gif'
+        print 'no good'
         cur.execute('''
-        INSERT INTO Urls_Done (num,url) VALUES (?,?)''',(count,'gif'))
+        INSERT INTO Urls_Done (num,url) VALUES (?,?)''',(count,'no good'))
         conn.commit()
     count+=1
 

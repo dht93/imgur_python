@@ -8,13 +8,18 @@ I'll automate this step soon '''
 import sqlite3
 from bs4 import BeautifulSoup
 
-conn=sqlite3.connect('candice.sqlite')                        #database file
+name=raw_input('name?\n')                            #name of the text file minus the extension. This makes the code reusable for
+db_name=name + '.sqlite'                             #different bunch of images
+
+conn=sqlite3.connect(db_name)                        #database file
 cur=conn.cursor()
 
 cur.execute('''
-CREATE TABLE IF NOT EXISTS Urls_To_Do (num NUMBER, url TEXT)''')
+CREATE TABLE IF NOT EXISTS Urls_To_Do (num NUMBER PRIMARY KEY, url TEXT)''')        #table to store urls to be downloaded
 
-f=open('candice.txt')
+f_name=name + '.txt'
+
+f=open(f_name)
 soup=BeautifulSoup(f.read(),'html.parser')
 f.close()
 
@@ -27,7 +32,7 @@ for post in posts:
     u=src[2:]
     url='http://'+str(u[:-5])+'.jpg'
     cur.execute('''
-    INSERT INTO Urls_To_Do (num,url) VALUES (?,?)''',(count, url))      #inserting the urls to be downloaded into a new table
+    INSERT INTO Urls_To_Do (num,url) VALUES (?,?)''',(count, url))
     conn.commit()
     count+=1
 print 'done'

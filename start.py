@@ -18,7 +18,7 @@ f=open('candice.txt')
 soup=BeautifulSoup(f.read(),'html.parser')
 f.close()
 
-posts=posts=soup.find_all('a','image-list-link')
+posts=soup.find_all('a','image-list-link')
 
 count=1
 

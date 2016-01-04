@@ -23,7 +23,7 @@ SELECT url FROM Urls_To_Do WHERE (num>=? and num<?)''',(count,count+10))
 
 urls=[el[0] for el in cur.fetchall()]
 
-directory='D:/Code/PY/Imgur/'+name+'/'                     
+directory='D:/Code/PY/Imgur/'+name+'/'                      #creates a new folder for a new keyword
 if not os.path.exists(directory):
     os.makedirs(directory)
 

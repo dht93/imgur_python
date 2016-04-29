@@ -28,10 +28,12 @@ if not os.path.exists(directory):
 for url in urls:
     h=requests.head(url)
     print 'got head'
-    if 20000<int(h.headers['content-length'])<1000000: 
+    if 20000<int(h.headers['content-length'])<5000000: 
     	print str(int(h.headers['content-length'])/1000)+" kb"           #making sure the file isn't a gif by making a rough estimate that the
         r=requests.get(url)                                 #content length is less than 1 MB
-        f_name=os.path.join(directory, name+'_'+str(count)+'.jpg')
+        type=url.split('.')[-1]
+        print type
+        f_name=os.path.join(directory, name+'_'+str(count)+'.'+type)
         with open(f_name,'wb') as f:
             f.write(r.content)
             f.close()
